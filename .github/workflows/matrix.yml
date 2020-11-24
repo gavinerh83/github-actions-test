@@ -3,13 +3,24 @@ on: push
 
 jobs:
   node-version:
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [macos-latest, ubuntu-latest, windows-latest]
+      #matrix allows code to run in 3 different node versions
+        node-version: [6, 8, 10]
+      #fail-fast if set to true, will stop the testing when one version fails
+      fail-fast: true
+      #maximum number of jobs that can be run simultaneously
+      max-parallel: 2
+    #matrix.os references the values from the matrix.os variable set above
+    runs-on: ${{ matrix.os }}
     steps:
       - name: Log node version
         run: node -v
         #uses third party package to set up node in virtual environment
       - uses: actions/setup-node@v1
         with:
-            node-version: 6
+            #matrix.node-version just references the values from the variable set above
+            node-version: ${{ matrix.node-version }}
       - name: Log node version
         run: node -v
