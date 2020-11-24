@@ -3,9 +3,13 @@ name: Shell Commands
 on: [push]
 
 jobs:
+  #name of job 1
   run-shell-command:
+    #operating system specification
     runs-on: ubuntu-latest
+    #steps to run
     steps:
+      #name of step 1
       - name: echo a string
         run: echo "Hello world"
       - name: multiline script
@@ -25,4 +29,5 @@ jobs:
         run: Get-Location
       - name: Directory Bash
         run: pwd
+        #need to specify type of shell used, as pwd command cannot run in windows
         shell: bash
