@@ -1,7 +1,6 @@
 name: Actions Workflow
 
 on:
-  #object push
   push:
   #object pull_request
   pull_request:
