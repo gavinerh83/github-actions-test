@@ -8,6 +8,11 @@ jobs:
         os: [macos-latest, ubuntu-latest, windows-latest]
       #matrix allows code to run in 3 different node versions
         node-version: [6, 8, 10]
+        exclude:
+          - os: ubuntu-latest
+            node-version: 6
+          - os: macos-latest
+            node-version: 8
       #fail-fast if set to true, will stop the testing when one version fails
       fail-fast: true
       #maximum number of jobs that can be run simultaneously
